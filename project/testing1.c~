@@ -1,0 +1,32 @@
+#include <msp430g2231.h>
+
+void main(void){
+
+  WDTCTL = WDTPW +WDTHOLD;
+
+
+  if (CALBC1_1MHZ == 0xFF || CALDCO_1MHZ == 0xFF){
+    while(1){
+
+    }
+
+  }
+
+  BCSCTL1 = CALBC1_1MHZ;
+  DCOCTL = CALDCO_1MHZ;
+
+
+  P1DIR = 0x40;
+
+  P1OUT = 0;
+
+  while(1){
+
+    P1OUT = 0x40;
+
+    _delay_cycles(50000);
+    P1OUT = 0;
+    _delay_cycles(50000);
+  }
+
+}
