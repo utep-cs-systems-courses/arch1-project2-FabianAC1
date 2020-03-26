@@ -4,7 +4,8 @@
 #include "led.h"
 #include "buzzer.h"
 #include "stateMachine.h"
-
+void turnOff();
+static int beat = 600; // used to change tunes
 char switch_state_down, switch_state_changed, s1, s2, s3, s4; /* effectively boolean */
 //global char dim = 0;
 
@@ -37,7 +38,7 @@ switch_init()/* setup switch */
 
   P2REN |= SWITCHES;/* enables resistors for switches */
 
-  P2IE = SWITCHES;/* enable interrupts from switches */
+  P2IE |= SWITCHES;/* enable interrupts from switches */
 
   P2OUT |= SWITCHES;/* pull-ups for switches */
 
@@ -73,13 +74,17 @@ switch_interrupt_handler()
   else if(s2){
       switch_state_down = s2;
       switch_state_changed = 1;
-      buzzer_set_period(1200);
+      buzzer_set_period(beat);
+      beat = beat + 50;// used to change the beat every time its pressed.
+      if (beat >2000){
+	beat = 600;
+      }
       led_init();
       toggle_red();
-      led_update();
+      
       dim1 = 0;
       green_on =1;
-
+      led_update();
   }
   else if(s3){
     switch_state_down = s3;

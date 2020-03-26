@@ -74,7 +74,7 @@ void state_advance()/* alternate between toggling red & green */
 
   switch (color) {
 
-  case R: changed = toggle_red(); color = G; break;
+  case R: changed = toggle_red();toggle_green(); color = G; break;
 
   case G: changed = toggle_green(); color = R; break;
 

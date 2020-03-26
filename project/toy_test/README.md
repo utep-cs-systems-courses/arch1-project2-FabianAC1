@@ -6,12 +6,11 @@
 
 ## switch 2
 
-   Thia switch toogles green and plays a note
+   This switch toogles green and plays a note that changes every time its pressed
 
 ## switch 3
 
-   This switch turns off all lights whne pressed twice as well as turns off
-   all sounds
+   This switch turns off all lights and sounds when pressed twice 
 
 ## switch 4
 
