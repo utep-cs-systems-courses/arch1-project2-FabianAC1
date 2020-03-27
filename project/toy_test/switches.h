@@ -1,3 +1,4 @@
+
 #ifndef switches_included
 
 #define switches_included
@@ -18,7 +19,7 @@ void switch_interrupt_handler();
 
 
 extern char switch_state_down, switch_state_changed, s1,s2,s3,s4; 
-
+extern int beat; // used for the changing beat in button 2
 
 
 #endif // included

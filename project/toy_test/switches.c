@@ -5,9 +5,10 @@
 #include "buzzer.h"
 #include "stateMachine.h"
 void turnOff();
-static int beat = 600; // used to change tunes
+void button_state(); // added these two for the methods in assembly
+
 char switch_state_down, switch_state_changed, s1, s2, s3, s4; /* effectively boolean */
-//global char dim = 0;
+int beat = 600;// used to cahnge the beat of the tune
 
 // used some of the methods provided by the demo labs to complete this lab
 static char
@@ -64,6 +65,8 @@ switch_interrupt_handler()
   s2 = (p1val & SW2) ? 0 : 1;
   s3 = (p1val & SW3) ? 0 : 1;
   s4 = (p1val & SW4) ? 0 : 1;
+   button_state();
+   /* I made the fallowing into switch cases then to a function in assembly called button_state();
   if (s1){
     switch_state_down = s1;
     switch_state_changed = 1;
@@ -99,5 +102,5 @@ switch_interrupt_handler()
     playSong();
     dim1 =0;
   }
-
+   */
 }
