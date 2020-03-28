@@ -66,7 +66,7 @@ switch_interrupt_handler()
   s3 = (p1val & SW3) ? 0 : 1;
   s4 = (p1val & SW4) ? 0 : 1;
   button_state();
-   /*
+   /* Used for switch cases
   if(s1) {
     state = 1;
   }
