@@ -5,6 +5,7 @@
 #include "buzzer.h"
 #include "stateMachine.h"
 void turnOff();
+void f();
 void button_state(); // added these two for the methods in assembly
 int state;
 char switch_state_down, switch_state_changed, s1, s2, s3, s4; /* effectively boolean */
@@ -65,24 +66,24 @@ switch_interrupt_handler()
   s2 = (p1val & SW2) ? 0 : 1;
   s3 = (p1val & SW3) ? 0 : 1;
   s4 = (p1val & SW4) ? 0 : 1;
-  button_state();
-   /* Used for switch cases
+  // button_state();
+   
   if(s1) {
-    state = 1;
+    state = 0;
   }
   else if(s2) {
 
-    state = 2;
+    state = 1;
   }
   else if(s3) {
-    state = 3;
+    state = 2;
   }
   else if(s4) {
-    state = 4;
+    state = 3;
 
   }
-   */
    
+   f();
    /* I made the fallowing into switch cases (below) then to a function in assembly called button_s      tate();
   if (s1) {
     switch_state_down = s1;
