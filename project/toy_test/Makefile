@@ -4,12 +4,12 @@ CFLAGS          = -mmcu=${CPU} -I../h
 LDFLAGS		= -L/opt/ti/msp430_gcc/include
 
 CC              = msp430-elf-gcc
-AS              = msp430-elf-as
+AS              = msp430-elf-as  -mcpu=msp430  --traditional-format -mP
 
 
 
 all: main.elf
-main.elf: ${COMMON_OBJECTS} p1_interrupt_handler.o led.o switches.o main.o buzzer.o stateMachine.o wdInterruptHandler.o reset.o ../lib/libTimer.a
+main.elf: ${COMMON_OBJECTS} p1_interrupt_handler.o led.o switches.o main.o buzzer.o stateMachine.o wdInterruptHandler.o assembly_code.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 load: main.elf
 	msp430loader.sh main.elf

@@ -1,7 +1,5 @@
 #include <msp430.h>
-
 #include "libTimer.h"
-
 #include "buzzer.h"
 #include "stateMachine.h"
 
@@ -9,33 +7,19 @@
 void buzzer_init()
 
 {
-
-
   timerAUpmode();
-
   P2SEL2 &= ~(BIT6 | BIT7);
-
   P2SEL &= ~BIT7;
-
   P2SEL |= BIT6;
-
   P2DIR = BIT6;
-
 }
-
-
 
 void buzzer_set_period(short cycles) /* buzzer clock = 2MHz.  (period of 1k results in 2kHz tone) */
 
 {
-
   CCR0 = cycles;
-
   CCR1 = cycles >> 1;/* one half cycle */
-
 }
-
-
 void playSong(){
   // Songs include mario theme song, never gonna give you up and the office theme song wich i used.
   // int song[] =  {837,887,1054,887,837,837,837,837,887,1054,887,837,837,837,0};
