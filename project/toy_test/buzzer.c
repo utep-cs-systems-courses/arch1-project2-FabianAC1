@@ -20,7 +20,8 @@ void buzzer_set_period(short cycles) /* buzzer clock = 2MHz.  (period of 1k resu
   CCR0 = cycles;
   CCR1 = cycles >> 1;/* one half cycle */
 }
-void playSong(){
+void playSong()
+{
   // Songs include mario theme song, never gonna give you up and the office theme song wich i used.
   // int song[] =  {837,887,1054,887,837,837,837,837,887,1054,887,837,837,837,0};
   // int song2[] = {1055,0,996,0,558,0,996,0,558,0,704,0,627,0,790,0,790,0,790,0,837,0,939,0,837,0,                    1055,0,996,0,558,0,996,0,887,0,558,0,627,0,704,0,627,0,704,0,837,0,790,0,790,0,                    790,0,837,0,939,0,837,0,1055,0,996,0,558,0,996,0,558,0,704,0,627,0};

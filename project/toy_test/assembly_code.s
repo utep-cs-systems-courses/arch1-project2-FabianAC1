@@ -31,8 +31,8 @@ check_State:
 	add r12,r12		;multiply state by 2
 	mov jt(r12), r0		;move program counter to right place 
 
-option1:			
-	mov.b &s1 , &switch_state_down
+option1:
+	
 	mov.b #1, &switch_state_changed
 	mov #1000,r12		;set buzz to 1000
 	call #buzzer_set_period
@@ -40,8 +40,8 @@ option1:
 	mov #4, &state
 	jmp default
 
-option2:	
-	mov.b &s2, &switch_state_down
+option2:
+	
 	mov.b #1, &switch_state_changed
 	mov &beat, r12		;set buzzer too beat value then add 50 to it
 	add #50, &beat
@@ -54,16 +54,17 @@ option2:
 	mov #4, &state
 	jmp default
 
-option3:	
-	mov.b &s3, &switch_state_down
+option3:
+
 	mov.b #1, &switch_state_changed
 	call #turnOff		;calls method to turn everything off
+	call #turnOff
 	mov.b #0, &dim1
 	mov #4, &state
 	jmp default
 
-option4:	
-	mov.b &s4, &switch_state_down
+option4:
+	 
 	mov.b #1, &switch_state_changed
 	call #playSong		;calls method to play the office song
 	mov.b #0, &dim1
