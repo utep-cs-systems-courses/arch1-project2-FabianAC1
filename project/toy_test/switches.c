@@ -3,16 +3,15 @@
 #include "led.h"
 #include "buzzer.h"
 #include "stateMachine.h"
+// next two methods are from the assembly file 
 void turnOff();
 void check_State();
-void button_state();      // added these two for the methods in assembly
 int state;
 char switch_state_down, switch_state_changed, s1, s2, s3, s4; /* effectively boolean */
-int beat = 600;           // used to cahnge the beat of the tune
+int beat = 600;           // used to change the beat of the tune
 
 // used some of the methods provided by the demo labs to complete this lab
 static char
-
 switch_update_interrupt_sense()
 
 {
@@ -44,7 +43,7 @@ void
 switch_interrupt_handler()
 {
   char p1val = switch_update_interrupt_sense();
-  // sets up values for the switches to check if pressed then te if statements check and carry out      an action depending the button pressed more in README.md
+  // sets up values for the state var too know what button is being pressed and therfore carry out the correct actions more on what bottons do in the README.md
   state = (p1val & SW1) ? state : 0;
   state = (p1val & SW2) ? state : 1;
   state = (p1val & SW3) ? state : 2;
